@@ -1,26 +1,39 @@
-import { documentFromText } from './latex';
-import { DaysReport } from './reports';
 import { currentMonth, currentYear } from './utils/dates';
 import { decode } from './utils/sets';
+import { generatePdfFromTex } from './tex-to-pdf';
+import { generateTexFile } from './tex-generate';
+import { mkdirSync, readdirSync, rmSync } from 'fs';
+
+const REPORTS_PATH = './reports';
+const FILE_NAME = 'WykazDni';
 
 if (process.argv[2] === 'help') {
-    help();
+    printHelp();
 } else {
-    void main();
+    generateReport().catch(console.error);
 }
 
-async function main(): Promise<void> {
+async function generateReport(): Promise<void> {
     const excluded: any = decode(process.argv[2]) ?? [];
     const month: any = process.argv[3] ?? currentMonth();
     const year: any = process.argv[4] ?? currentYear();
     const invoice: any = process.argv[5] ?? 1;
 
-    await documentFromText(new DaysReport(year, month, invoice, excluded), 'WykazDni');
-
-    console.log('Done');
+    prepareReportsDirectory();
+    await generateTexFile(`${REPORTS_PATH}/${FILE_NAME}.tex`, year, month, invoice, excluded);
+    await generatePdfFromTex(`${FILE_NAME}.tex`);
+    console.log('Done!');
 }
 
-function help(): void {
+function prepareReportsDirectory(): void {
+    try {
+        readdirSync(REPORTS_PATH).forEach((file) => rmSync(`${REPORTS_PATH}/${file}`));
+    } catch (err) {
+        mkdirSync(REPORTS_PATH);
+    }
+}
+
+function printHelp(): void {
     console.log('Usage:');
     console.log('npm run generate -- [excluded] [month] [year] [invoice]');
     console.log('  excluded - days excluded from the report ; default empty');

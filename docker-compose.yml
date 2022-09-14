@@ -1,0 +1,6 @@
+services:
+  tex-to-pdf:
+    image: piotrgajow/tex-to-pdf
+    build: ./tex-to-pdf
+    volumes:
+      - ./reports:/files

@@ -1,5 +1,5 @@
 import { BaseReportDocument } from './BaseReportDocument';
-import { workingDaysInMonth } from '../utils/dates';
+import { workingDaysInMonth } from '../../utils/dates';
 
 export class DaysReport extends BaseReportDocument {
 

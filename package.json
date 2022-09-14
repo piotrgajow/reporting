@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "help": "ts-node ./src/index.ts help",
-    "start": "ts-node ./src/index.ts help",
-    "generate": "ts-node ./src/index.ts",
+    "build": "docker-compose build",
+    "help": "ts-node index.ts help",
+    "start": "ts-node index.ts help",
+    "generate": "ts-node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
