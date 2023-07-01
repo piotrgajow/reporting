@@ -25,7 +25,7 @@ export class DaysReport extends BaseReportDocument {
     }
 
     private getInvoiceNumber(): string {
-        return `FVS/${this.invoice}/${this.month}/${this.year}`;
+        return `A${this.invoice}/${this.month}/${this.year}`;
     }
 
     private getDaysTable(): string {
