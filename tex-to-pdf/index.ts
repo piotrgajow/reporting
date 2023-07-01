@@ -21,7 +21,7 @@ interface DockerComposeConfig {
 }
 
 async function runDockerCompose(config: DockerComposeConfig): Promise<void> {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
         const { service, command, options = [], args = [] } = config;
         const process = spawn('docker-compose', ['run', ...options, service, command, ...args]);
 

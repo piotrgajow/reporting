@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "docker-compose build",
-    "help": "ts-node index.ts help",
-    "start": "ts-node index.ts help",
-    "generate": "ts-node index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "help": "ts-node help/index.ts",
+    "start": "ts-node help/index.ts",
+    "generate": "bash main.sh"
   },
   "author": "",
   "license": "ISC",

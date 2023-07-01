@@ -4,3 +4,10 @@ services:
     build: ./tex-to-pdf
     volumes:
       - ./reports:/files
+  tex-to-pdf-debug:
+    image: piotrgajow/tex-to-pdf
+    build: ./tex-to-pdf
+    volumes:
+      - ./reports:/files
+    stdin_open: true
+    tty: true
