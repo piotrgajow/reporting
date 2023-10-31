@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "docker-compose build",
+    "debug": "docker-compose run tex-to-pdf-debug",
     "help": "ts-node help/index.ts",
     "start": "ts-node help/index.ts",
     "generate": "bash main.sh"

@@ -3,6 +3,7 @@
 FROM debian:bookworm-slim AS texlive-base
 
 ENV TEXDIR=/usr/local/texlive
+ENV ARCH=aarch64-linux
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends wget ca-certificates perl
@@ -15,7 +16,7 @@ RUN perl ./texlive/install-tl --no-interaction --scheme=basic --no-doc-install -
 RUN rm -rf texlive
 RUN rm texlive.tar.gz
 
-ENV PATH=$TEXDIR/bin/x86_64-linux:$PATH
+ENV PATH=$TEXDIR/bin/$ARCH:$PATH
 
 FROM texlive-base as texlive-onfly
 
@@ -25,4 +26,4 @@ RUN tlmgr install texliveonfly
 
 FROM texlive-onfly
 
-ENTRYPOINT texliveonfly --compiler=pdflatex --arguments="-synctex=0 -interaction=nonstopmode" WykazDni.tex
+ENTRYPOINT cd files && texliveonfly --compiler=pdflatex --arguments="-synctex=0 -interaction=nonstopmode" WykazDni.tex
