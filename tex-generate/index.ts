@@ -1,4 +1,4 @@
-import { DaysReport } from './reports';
+import { HoursReport } from './reports';
 import { writeFileSync } from 'fs';
 import { currentMonth, currentYear } from '../utils/dates';
 import { decode } from '../utils/sets';
@@ -20,7 +20,7 @@ async function generateReport(): Promise<void> {
 
 async function generateTexFile(file: string, year: number, month: number, invoice: number, excluded: number[]): Promise<void> {
     return new Promise<void>((resolve) => {
-        const report = new DaysReport(year, month, invoice, excluded);
+        const report = new HoursReport(year, month, invoice, excluded);
         writeFileSync(file, report.getText());
         resolve();
     });
