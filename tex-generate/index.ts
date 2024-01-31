@@ -4,7 +4,7 @@ import { currentMonth, currentYear } from '../utils/dates';
 import { decode } from '../utils/sets';
 
 const REPORTS_PATH: string = './reports';
-const FILE_NAME: string = 'WykazDni.tex';
+const FILE_NAME: string = 'WykazGodzin.tex';
 
 generateReport().catch(console.error);
 
