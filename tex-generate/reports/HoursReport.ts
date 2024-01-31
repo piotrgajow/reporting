@@ -53,7 +53,7 @@ function buildContent(invoiceNumber: string, tableContent: string): string {
 \\header{Wykaz godzin świadczenia usług}
 
 \\noindent
-\\begin{tabularx}{\\textwidth}{|l|X|X|X|}
+\\begin{tabularx}{\\textwidth}{|r|l|r|X|}
 \\hline
 \\textbf{Lp.} & \\textbf{Dzień} & \\textbf{Liczba godzin} & \\textbf{Opis} \\\\
 \\hline
