@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "docker:build": "bash docker/build.sh",
+    "docker:pull": "bash docker/pull.sh",
     "build": "docker-compose build",
     "debug": "docker-compose run tex-to-pdf-debug",
     "help": "ts-node help/index.ts",
